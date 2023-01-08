@@ -2,12 +2,12 @@ import jwt from 'jsonwebtoken';
 import config from 'config';
 
 const maxAge = config.get<number>('maxAge');
-const jwtSecret = config.get<string>('jwtSecret ');
+const jwtSecret = config.get<string>('jwtSecret');
 
 interface JwtInfo {
   name: string;
   email: string;
-  password: string;
+  id: string;
 }
 
 const createAccessToken = (info:JwtInfo) => {
