@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-import Wallet from '../models/Walltet';
+import Wallet from '../models/Wallet';
 import logger from '../utils/logger';
 
 // create a wallet
@@ -29,4 +29,19 @@ const getWallets = async (req: Request, res: Response) => {
   }
 };
 
-export default { createWallet, getWallets };
+const updateWalletAmount = async (req: Request, res: Response) => {
+  const { walletId } = req.params;
+
+  try {
+    const wallet = await Wallet.findByIdAndUpdate(walletId, req.body, { new: true });
+    res.status(200).json({
+      message: 'note updated successfully',
+      wallet,
+    });
+  } catch (error:any) {
+    logger.info(error);
+    return res.status(500).json(error);
+  }
+};
+
+export default { createWallet, getWallets, updateWalletAmount };

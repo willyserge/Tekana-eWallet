@@ -15,7 +15,7 @@ export interface WalletDocument extends UserInput, mongoose.Document {
 const walletSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
-    amount: { type: Number, required: false },
+    amount: { type: Number, default: 0, required: false },
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: 'User',

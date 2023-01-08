@@ -5,6 +5,7 @@ import config from 'config';
 import connect from './utils/connect';
 import logger from './utils/logger';
 import authRouter from './routes/user';
+import walletRouter from './routes/wallet';
 
 const port = config.get<number>('port');
 
@@ -16,6 +17,7 @@ app.use(cookieParser());
 // routes
 
 app.use('/api/auth', authRouter);
+app.use('/api/wallet', walletRouter);
 
 app.listen(port, async () => {
   await connect();
