@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 import dotenv from 'dotenv';
 
 dotenv.config();
